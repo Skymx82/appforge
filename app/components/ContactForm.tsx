@@ -117,32 +117,40 @@ export default function ContactForm() {
       setIsSubmitting(true);
       setSubmitStatus('idle');
 
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          captchaToken
-        }),
-      });
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 secondes timeout
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({
+            ...formData,
+            captchaToken
+          }),
+          signal: controller.signal
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setSubmitStatus('success');
+        setFormData(initialFormData);
+        setStep(1);
+        recaptchaRef.current?.reset();
+      } catch (error) {
+        if (error.name === 'AbortError') {
+          throw new Error('La requête a pris trop de temps. Veuillez réessayer.');
+        }
+        throw error;
       }
-
-      const data = await response.json();
-      
-      if (!response.ok) {
-        throw new Error(data.error || 'Erreur lors de l\'envoi du message');
-      }
-
-      setSubmitStatus('success');
-      setFormData(initialFormData);
-      setStep(1);
-      recaptchaRef.current?.reset();
     } catch (error) {
       console.error('Erreur:', error);
       setSubmitStatus('error');
@@ -403,22 +411,21 @@ export default function ContactForm() {
               </div>
 
               {/* reCAPTCHA */}
-              <div className="flex justify-center">
+              <div className="mt-6" role="complementary" aria-label="Vérification CAPTCHA">
                 <ReCAPTCHA
                   ref={recaptchaRef}
-                  size="normal"
-                  sitekey="6Lfmf78qAAAAAEgD0ZdQYBPwHSJyySy9cssA1W5Q"
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6Lfmf78qAAAAAEgD0ZdQYBPwHSJyySy9cssA1W5Q'}
                   theme="dark"
+                  hl="fr"
+                  size="normal"
+                  tabIndex={0}
                 />
-              </div>
-
-              {showCaptchaError && (
-                <div className="mt-4 p-4 bg-red-900/50 border border-red-500 rounded-lg">
-                  <p className="text-red-400">
-                    Veuillez valider le CAPTCHA avant d'envoyer le formulaire.
+                {showCaptchaError && (
+                  <p className="text-red-500 text-sm mt-2" role="alert">
+                    Veuillez valider le CAPTCHA avant d'envoyer le formulaire
                   </p>
-                </div>
-              )}
+                )}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
