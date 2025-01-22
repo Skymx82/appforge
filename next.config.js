@@ -8,9 +8,7 @@ const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   swcMinify: true,
-  experimental: {
-    optimizeCss: true,
-  },
+  output: 'export',
 }
 
 module.exports = nextConfig

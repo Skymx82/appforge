@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 
@@ -8,16 +8,18 @@ const inter = Inter({
   preload: true,
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#000000',
+};
+
 export const metadata: Metadata = {
   title: 'AppForge - Digital Solutions',
   description: 'Transform your ideas into powerful digital solutions',
   icons: {
     icon: '/logo.jpeg',
     apple: '/logo.jpeg',
-  },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
   },
 };
 
@@ -37,7 +39,6 @@ export default function RootLayout({
           as="video"
           type="video/mp4"
         />
-        <meta name="theme-color" content="#000000" />
       </head>
       <body className={inter.className}>{children}</body>
     </html>
