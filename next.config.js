@@ -9,7 +9,7 @@ const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   swcMinify: true,
-  trailingSlash: true,
+  trailingSlash: false,
 }
 
 module.exports = nextConfig
