@@ -7,6 +7,10 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'AppForge - Digital Solutions',
   description: 'Transform your ideas into powerful digital solutions',
+  icons: {
+    icon: '/logo.jpeg',
+    apple: '/logo.jpeg',
+  },
 };
 
 export default function RootLayout({
@@ -15,7 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="fr">
+      <head>
+        <link rel="icon" href="/logo.jpeg" />
+        <link rel="apple-touch-icon" href="/logo.jpeg" />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );
