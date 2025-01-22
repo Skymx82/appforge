@@ -28,10 +28,6 @@ const steps = [
 export default function ProcessSection() {
   const router = useRouter();
 
-  const handleStartNow = () => {
-    router.push('/contact');
-  };
-
   return (
     <section className="relative py-16 md:py-24 bg-gray-950" id="process">
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-transparent"></div>
@@ -110,14 +106,14 @@ export default function ProcessSection() {
               professionnelle. Configuration simple, déploiement rapide 
               et support continu pour votre réussite.
             </p>
-            <motion.button
+            <motion.a
+              href="/contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={handleStartNow}
-              className="px-8 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+              className="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition-colors inline-block"
             >
               Commencer maintenant
-            </motion.button>
+            </motion.a>
           </motion.div>
         </div>
       </div>

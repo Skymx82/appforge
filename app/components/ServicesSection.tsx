@@ -148,12 +148,12 @@ export default function ServicesSection() {
               ))}
             </ul>
             <div className="mt-6">
-              <button
-                onClick={() => router.push('/contact')}
-                className="w-full py-2 px-4 bg-primary hover:bg-primary/90 text-white rounded-md transition-colors"
+              <a
+                href="/contact"
+                className="w-full py-2 px-4 bg-primary hover:bg-primary/90 text-white rounded-lg transition-colors"
               >
-                Choisir cette offre
-              </button>
+                Choisir
+              </a>
             </div>
           </motion.div>
         ))}
