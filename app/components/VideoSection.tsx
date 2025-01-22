@@ -85,9 +85,11 @@ export default function ProcessSection() {
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"></div>
             <video
               autoPlay
-              loop
               muted
+              loop
               playsInline
+              preload="none"
+              poster="/logo_transparent.png"
               className="w-full h-full object-cover"
             >
               <source src="/hero_video.mp4" type="video/mp4" />

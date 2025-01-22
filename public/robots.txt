@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://appforge.fr/sitemap.xml
+Sitemap: https://appforge.netlify.app/sitemap.xml
 
 # Ne pas indexer les pages d'administration ou privées
 Disallow: /admin/
