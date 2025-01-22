@@ -1,0 +1,20 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://appforge.fr/sitemap.xml
+
+# Ne pas indexer les pages d'administration ou privées
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Permettre l'indexation des ressources statiques
+Allow: /images/
+Allow: /static/
+Allow: /*.js$
+Allow: /*.css$
+
+# Optimiser le taux de crawl
+Crawl-delay: 1
