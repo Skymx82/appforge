@@ -55,125 +55,78 @@ function validateEmail(email: string): boolean {
   return emailRegex.test(email);
 }
 
-export async function POST(req: Request) {
+export async function POST(request: Request) {
   try {
-    if (req.method !== 'POST') {
-      return NextResponse.json(
-        { error: 'Méthode non autorisée' },
-        { status: 405 }
-      );
-    }
+    const body = await request.json();
+    const { name, email, phone, company, projectType, description, features, budget, timeline, captchaToken } = body;
 
-    const data = await req.json();
-    
     // Validation des champs requis
-    if (!data.name?.trim()) {
+    if (!name || !email || !projectType || !description) {
       return NextResponse.json(
-        { error: 'Le nom est requis' },
+        { error: 'Champs requis manquants' },
         { status: 400 }
       );
     }
 
-    if (!data.email?.trim()) {
+    // Validation de l'email
+    if (!validateEmail(email)) {
       return NextResponse.json(
-        { error: 'L\'email est requis' },
-        { status: 400 }
-      );
-    }
-
-    if (!validateEmail(data.email)) {
-      return NextResponse.json(
-        { error: 'Format d\'email invalide' },
-        { status: 400 }
-      );
-    }
-
-    if (!data.projectType?.trim()) {
-      return NextResponse.json(
-        { error: 'Le type de projet est requis' },
-        { status: 400 }
-      );
-    }
-
-    if (!data.description?.trim()) {
-      return NextResponse.json(
-        { error: 'La description du projet est requise' },
+        { error: 'Email invalide' },
         { status: 400 }
       );
     }
 
     // Vérification du CAPTCHA
-    if (!data.captchaToken) {
+    if (!captchaToken) {
       return NextResponse.json(
-        { error: 'Le CAPTCHA est requis' },
+        { error: 'CAPTCHA requis' },
         { status: 400 }
       );
     }
 
-    const isCaptchaValid = await verifyCaptcha(data.captchaToken);
+    const isCaptchaValid = await verifyCaptcha(captchaToken);
     if (!isCaptchaValid) {
       return NextResponse.json(
-        { error: 'CAPTCHA invalide ou expiré' },
+        { error: 'CAPTCHA invalide' },
         { status: 400 }
       );
     }
 
-    // Vérification des variables d'environnement pour l'email
-    if (!process.env.EMAIL_PASSWORD) {
-      console.error('EMAIL_PASSWORD non définie');
-      return NextResponse.json(
-        { error: 'Erreur de configuration du serveur' },
-        { status: 500 }
-      );
-    }
-
-    // Préparer le contenu de l'email avec les nouvelles informations
+    // Construction du contenu de l'email
     const emailContent = `
-      Nouvelle demande de contact:
+      Nouveau contact depuis le site AppForge :
       
-      Informations personnelles:
-      ------------------------
-      Nom: ${data.name}
-      Email: ${data.email}
-      Téléphone: ${data.phone || 'Non renseigné'}
-      Entreprise: ${data.company || 'Non renseigné'}
+      Nom: ${name}
+      Email: ${email}
+      Téléphone: ${phone || 'Non renseigné'}
+      Entreprise: ${company || 'Non renseigné'}
       
-      Détails du projet:
-      ----------------
-      Type de projet: ${data.projectType}
-      Budget estimé: ${data.budget || 'Non renseigné'}
-      Délai souhaité: ${data.timeline || 'Non renseigné'}
-      Description: ${data.description}
+      Type de projet: ${projectType}
+      Description: ${description}
+      
+      Budget: ${budget || 'Non renseigné'}
+      Délai souhaité: ${timeline || 'Non renseigné'}
       
       Fonctionnalités souhaitées:
-      ------------------------
-      ${data.features?.length > 0 ? data.features.join('\n- ') : 'Aucune fonctionnalité sélectionnée'}
-    `.trim();
+      ${features ? features.join('\n') : 'Aucune fonctionnalité spécifiée'}
+    `;
 
-    // Envoyer l'email
-    try {
-      await transporter.sendMail({
-        from: '"AppForge Contact" <appforge.owner@gmail.com>',
-        to: 'appforge.owner@gmail.com',
-        subject: `Nouvelle demande de contact - ${data.name}`,
-        text: emailContent,
-      });
+    // Envoi de l'email
+    await transporter.sendMail({
+      from: 'appforge.owner@gmail.com',
+      to: 'appforge.owner@gmail.com',
+      subject: `Nouvelle demande de contact - ${name}`,
+      text: emailContent,
+    });
 
-      return NextResponse.json(
-        { message: 'Message envoyé avec succès' },
-        { status: 200 }
-      );
-    } catch (error) {
-      console.error('Erreur d\'envoi d\'email:', error);
-      return NextResponse.json(
-        { error: 'Erreur lors de l\'envoi de l\'email' },
-        { status: 500 }
-      );
-    }
-  } catch (error) {
-    console.error('Erreur générale:', error);
     return NextResponse.json(
-      { error: 'Une erreur est survenue' },
+      { message: 'Message envoyé avec succès' },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error('Erreur lors de l\'envoi du message:', error);
+    return NextResponse.json(
+      { error: 'Erreur lors de l\'envoi du message' },
       { status: 500 }
     );
   }
