@@ -1,10 +1,14 @@
 [build]
-  command = "next build"
+  command = "npm run build"
   publish = ".next"
 
 [build.environment]
   NODE_VERSION = "18"
   NEXT_USE_NETLIFY_EDGE = "true"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["nodemailer"]
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
