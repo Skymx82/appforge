@@ -160,10 +160,7 @@ export default function ContactForm() {
     setSubmitStatus('idle');
 
     try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 10000);
-
-      const response = await fetch('/.netlify/functions/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -172,38 +169,23 @@ export default function ContactForm() {
           ...formData,
           captchaToken
         }),
-        signal: controller.signal
       });
 
-      clearTimeout(timeoutId);
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Une erreur est survenue');
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData(initialFormData);
+        recaptchaRef.current?.reset();
+      } else {
+        const data = await response.json();
+        if (data.error) {
+          setError(data.error);
+        } else {
+          setError('Une erreur est survenue lors de l\'envoi du message');
+        }
       }
-
-      setSubmitStatus('success');
-      setFormData(initialFormData);
-      setStep(1);
-      recaptchaRef.current?.reset();
     } catch (error: any) {
       console.error('Erreur:', error);
-      setSubmitStatus('error');
-      
-      if (error instanceof Error) {
-        if (error.name === 'AbortError') {
-          setError('La requête a pris trop de temps. Veuillez réessayer.');
-        } else if (error.message.includes('CAPTCHA')) {
-          setShowCaptchaError(true);
-          setError('Le CAPTCHA est invalide ou a expiré. Veuillez réessayer.');
-          recaptchaRef.current?.reset();
-        } else {
-          setError(error.message);
-        }
-      } else {
-        setError('Une erreur inattendue est survenue');
-      }
+      setError('Une erreur est survenue lors de l\'envoi du message');
     } finally {
       setIsSubmitting(false);
     }
@@ -224,6 +206,13 @@ export default function ContactForm() {
 
   return (
     <div className="max-w-4xl mx-auto">
+      <a
+        href="https://appforgetech.netlify.app/"
+        className="inline-flex items-center px-4 py-2 mb-8 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors"
+      >
+        ← Retour à l'accueil
+      </a>
+
       {/* Étapes */}
       <div className="mb-8">
         <div className="flex justify-between items-center">
