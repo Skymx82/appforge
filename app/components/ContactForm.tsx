@@ -206,13 +206,6 @@ export default function ContactForm() {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <a
-        href="https://appforgetech.netlify.app/"
-        className="inline-flex items-center px-4 py-2 mb-8 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors"
-      >
-        ← Retour à l'accueil
-      </a>
-
       {/* Étapes */}
       <div className="mb-8">
         <div className="flex justify-between items-center">
