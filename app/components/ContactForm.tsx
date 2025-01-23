@@ -75,6 +75,7 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [showCaptchaError, setShowCaptchaError] = useState(false);
+  const [error, setError] = useState<string>('');
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -96,77 +97,129 @@ export default function ContactForm() {
     }));
   };
 
+  const validateStep = (currentStep: number): boolean => {
+    setError('');
+    
+    switch (currentStep) {
+      case 1:
+        if (!formData.name || !formData.email) {
+          setError('Le nom et l\'email sont obligatoires');
+          return false;
+        }
+        // Validation email
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+          setError('Veuillez entrer une adresse email valide');
+          return false;
+        }
+        break;
+      case 2:
+        if (!formData.projectType) {
+          setError('Veuillez sélectionner un type de projet');
+          return false;
+        }
+        break;
+      case 3:
+        if (!formData.description) {
+          setError('La description du projet est obligatoire');
+          return false;
+        }
+        if (!formData.gdprConsent) {
+          setError('Veuillez accepter la politique de confidentialité');
+          return false;
+        }
+        break;
+    }
+    return true;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
     
     if (step !== 3) {
-      setStep(step + 1);
+      if (validateStep(step)) {
+        setStep(step + 1);
+      }
       return;
     }
 
-    // Vérifier le CAPTCHA
+    if (!validateStep(3)) {
+      return;
+    }
+
+    // Vérification du CAPTCHA
+    const captchaToken = recaptchaRef.current?.getValue();
+    if (!captchaToken) {
+      setShowCaptchaError(true);
+      setError('Veuillez valider le CAPTCHA');
+      return;
+    }
+
+    setShowCaptchaError(false);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
     try {
-      const captchaToken = recaptchaRef.current?.getValue();
-      if (!captchaToken) {
-        console.error('Erreur: Veuillez valider le CAPTCHA');
-        setShowCaptchaError(true);
-        return;
-      }
-
-      setShowCaptchaError(false);
-      setIsSubmitting(true);
-      setSubmitStatus('idle');
-
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 secondes timeout
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-      try {
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-          body: JSON.stringify({
-            ...formData,
-            captchaToken
-          }),
-          signal: controller.signal
-        });
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          captchaToken
+        }),
+        signal: controller.signal
+      });
 
-        clearTimeout(timeoutId);
+      clearTimeout(timeoutId);
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
+      const data = await response.json();
 
-        const data = await response.json();
-        setSubmitStatus('success');
-        setFormData(initialFormData);
-        setStep(1);
-        recaptchaRef.current?.reset();
-      } catch (error) {
-        if (error.name === 'AbortError') {
-          throw new Error('La requête a pris trop de temps. Veuillez réessayer.');
-        }
-        throw error;
+      if (!response.ok) {
+        throw new Error(data.error || 'Une erreur est survenue');
       }
-    } catch (error) {
+
+      setSubmitStatus('success');
+      setFormData(initialFormData);
+      setStep(1);
+      recaptchaRef.current?.reset();
+    } catch (error: any) {
       console.error('Erreur:', error);
       setSubmitStatus('error');
+      
+      if (error instanceof Error) {
+        if (error.name === 'AbortError') {
+          setError('La requête a pris trop de temps. Veuillez réessayer.');
+        } else if (error.message.includes('CAPTCHA')) {
+          setShowCaptchaError(true);
+          setError('Le CAPTCHA est invalide ou a expiré. Veuillez réessayer.');
+          recaptchaRef.current?.reset();
+        } else {
+          setError(error.message);
+        }
+      } else {
+        setError('Une erreur inattendue est survenue');
+      }
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleNext = () => {
-    setStep(step + 1);
-    setShowCaptchaError(false); // Réinitialiser l'erreur du CAPTCHA lors du changement d'étape
+    if (validateStep(step)) {
+      setStep(step + 1);
+      setShowCaptchaError(false);
+    }
   };
 
   const handleBack = () => {
+    setError('');
     setStep(step - 1);
-    setShowCaptchaError(false); // Réinitialiser l'erreur du CAPTCHA lors du changement d'étape
+    setShowCaptchaError(false);
   };
 
   return (
@@ -472,6 +525,18 @@ export default function ContactForm() {
           )}
         </div>
       </form>
+
+      {/* Affichage des erreurs */}
+      {error && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          className="mt-4 p-4 bg-red-900/50 border border-red-500 rounded-lg text-red-400"
+        >
+          {error}
+        </motion.div>
+      )}
 
       {/* Message de statut */}
       <AnimatePresence>

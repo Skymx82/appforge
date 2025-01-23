@@ -21,7 +21,6 @@ export default function Contact() {
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-transparent"></div>
         
         <div className="relative container mx-auto px-6">
-          {/* En-tête */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -37,9 +36,7 @@ export default function Contact() {
             </p>
           </motion.div>
 
-          {/* Grille principale */}
           <div className="grid lg:grid-cols-3 gap-12 items-start">
-            {/* Informations de contact */}
             <div className="lg:col-span-1 space-y-8">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -99,7 +96,6 @@ export default function Contact() {
               </motion.div>
             </div>
 
-            {/* Formulaire de contact */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
