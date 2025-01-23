@@ -40,22 +40,32 @@ const initialFormData: FormData = {
 };
 
 const projectTypes = [
-  'Application de fidélité',
+  'Site Web',
   'E-commerce',
-  'Application métier',
-  'Site vitrine',
+  'Application Mobile',
+  'Application Premium',
   'Autre',
 ];
 
+const budgetRanges = [
+  'Moins de 2 000€',
+  '2 000€ - 5 000€',
+  '5 000€ - 10 000€',
+  '10 000€ - 20 000€',
+  'Plus de 20 000€'
+];
+
 const featuresList = [
+  'Design sur mesure',
   'Authentification utilisateurs',
-  'Paiements en ligne',
+  'Paiement en ligne',
   'Notifications push',
-  'Chat en direct',
-  'Dashboard admin',
+  'Gestion de contenu',
+  'Multi-langues',
+  'Statistiques avancées',
   'API personnalisée',
-  'Géolocalisation',
-  'Analytics avancés',
+  'Système de réservation',
+  'Multi-plateformes'
 ];
 
 const formVariants = {
@@ -350,10 +360,9 @@ export default function ContactForm() {
                   className="mt-1 block w-full rounded-lg bg-gray-900 border border-gray-800 py-2 px-3 text-white placeholder-gray-400 focus:border-primary focus:ring-primary sm:text-sm"
                 >
                   <option value="">Sélectionnez un budget</option>
-                  <option value="1500-3000">1 500€ - 3 000€</option>
-                  <option value="3000-5000">3 000€ - 5 000€</option>
-                  <option value="5000-7000">5 000€ - 7 000€</option>
-                  <option value="7000+">7 000€ +</option>
+                  {budgetRanges.map(budget => (
+                    <option key={budget} value={budget}>{budget}</option>
+                  ))}
                 </select>
               </div>
 

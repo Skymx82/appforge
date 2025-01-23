@@ -18,14 +18,14 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="text-center">
             <span className="bg-primary/10 text-primary px-4 py-1 rounded-full text-sm mb-6 inline-block">
-              Applications de fidélisation
+              Sites Web & Applications Mobiles
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight text-white">
-              Votre Application<br className="hidden md:block" /> Sur Mesure
+              Votre Projet Digital<br className="hidden md:block" /> Sur Mesure
             </h2>
             <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto px-4">
-              Du commerce local à la grande entreprise,<br className="hidden md:block" />
-              nous créons votre application à partir de 1 500€ HT
+              Du site web à l'application mobile,<br className="hidden md:block" />
+              nous créons votre solution digitale à partir de 999€ HT
             </p>
             <ContactButton />
           </div>
@@ -34,24 +34,24 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-12 md:mt-16">
             {[
               {
-                title: 'Démarrage',
-                price: '1 500€ HT',
-                monthly: '50€ HT/mois'
+                title: 'Site Web',
+                price: '999€ HT',
+                monthly: '29€ HT/mois'
               },
               {
-                title: 'Essentielle',
-                price: '3 000€ HT',
-                monthly: '90€ HT/mois'
+                title: 'E-commerce',
+                price: '2 499€ HT',
+                monthly: '49€ HT/mois'
               },
               {
-                title: 'Avancée',
-                price: '5 000€ HT',
+                title: 'App Mobile',
+                price: 'À partir de 7 500€ HT',
                 monthly: '150€ HT/mois',
                 highlighted: true
               },
               {
-                title: 'Premium',
-                price: '7 000€ HT',
+                title: 'App Premium',
+                price: 'À partir de 15 000€ HT',
                 monthly: '250€ HT/mois'
               }
             ].map((plan, index) => (

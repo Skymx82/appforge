@@ -5,59 +5,59 @@ import { CheckIcon } from '@heroicons/react/24/solid';
 
 const services = [
   {
-    title: 'Démarrage',
+    title: 'Site Web',
     features: [
-      'Carte de fidélité simple',
-      'Notifications (100/mois)',
-      'Design de base',
-      'Support par email',
+      'Site vitrine responsive',
+      'Design moderne',
+      'Formulaire de contact',
+      'SEO de base',
       'Hébergement inclus'
     ],
     price: {
-      initial: '1 500€ HT',
-      monthly: '50€ HT/mois'
+      initial: '999€ HT',
+      monthly: '29€ HT/mois'
     }
   },
   {
-    title: 'Essentielle',
+    title: 'E-commerce',
     features: [
-      'Tout ce qui est inclus dans Démarrage',
-      'Notifications illimitées',
+      'Tout ce qui est inclus dans Site Web',
+      'Boutique en ligne',
+      'Paiement sécurisé',
+      'Gestion des stocks',
+      'Support téléphone'
+    ],
+    price: {
+      initial: '2 499€ HT',
+      monthly: '49€ HT/mois'
+    }
+  },
+  {
+    title: 'App Mobile',
+    features: [
+      'Application native',
       'Design personnalisé',
-      'Support téléphone',
-      'Statistiques clients'
+      'Notifications push',
+      'Support technique',
+      'Publication stores'
     ],
     price: {
-      initial: '3 000€ HT',
-      monthly: '90€ HT/mois'
-    }
-  },
-  {
-    title: 'Avancée',
-    features: [
-      'Tout ce qui est inclus dans Essentielle',
-      'Design premium',
-      'Support prioritaire',
-      'Promotions automatiques',
-      'Paiement intégré'
-    ],
-    price: {
-      initial: '5 000€ HT',
+      initial: 'À partir de 7 500€ HT',
       monthly: '150€ HT/mois'
     },
     highlighted: true
   },
   {
-    title: 'Premium',
+    title: 'App Premium',
     features: [
-      'Tout ce qui est inclus dans Avancée',
-      'Design sur mesure',
-      'Support dédié',
-      'Multi-boutiques',
-      'Système de réservation'
+      'Tout ce qui est inclus dans App Mobile',
+      'Design premium',
+      'Paiement intégré',
+      'Support prioritaire',
+      'Multi-plateformes'
     ],
     price: {
-      initial: '7 000€ HT',
+      initial: 'À partir de 15 000€ HT',
       monthly: '250€ HT/mois'
     }
   }
@@ -82,9 +82,12 @@ export default function ServicesSection() {
   return (
     <div id="services" className="container mx-auto px-4 md:px-6 py-16 md:py-24">
       <div className="text-center mb-12">
-        <h3 className="text-3xl font-bold text-white mb-4">Nos Offres</h3>
+        <h3 className="text-3xl font-bold text-white mb-4">Nos Solutions</h3>
         <p className="text-gray-400">
-          Des solutions adaptées à tous les budgets
+          Du site web à l'application mobile, choisissez l'offre adaptée à vos besoins
+        </p>
+        <p className="text-sm text-gray-500 mt-2">
+          Les tarifs des applications mobiles sont modulables selon vos fonctionnalités spécifiques
         </p>
       </div>
 
@@ -102,31 +105,22 @@ export default function ServicesSection() {
           >
             <h4 className="text-xl font-bold text-white mb-4">{service.title}</h4>
             <div className="mb-6">
-              <div className="text-2xl font-bold text-primary mb-1">
-                {service.price.initial}
-              </div>
-              <div className="text-sm text-gray-400">
-                + {service.price.monthly}
-              </div>
+              <div className="text-2xl font-bold text-white">{service.price.initial}</div>
+              <div className="text-sm text-gray-400">+ {service.price.monthly}</div>
             </div>
-            <ul className="space-y-3">
+            <ul className="space-y-3 mb-6">
               {service.features.map((feature, featureIndex) => (
                 <li key={featureIndex} className="flex items-start">
-                  <CheckIcon className="w-5 h-5 text-primary shrink-0 mt-0.5 mr-3" />
+                  <CheckIcon className="w-5 h-5 text-primary shrink-0 mr-2 mt-0.5" />
                   <span className="text-gray-300">{feature}</span>
                 </li>
               ))}
             </ul>
             <button
               onClick={() => router.push('/contact')}
-              className={`
-                w-full mt-6 px-4 py-2 rounded-lg font-medium transition-colors
-                ${service.highlighted
-                  ? 'bg-primary text-white hover:bg-primary/90'
-                  : 'bg-gray-800 text-white hover:bg-gray-700'}
-              `}
+              className="w-full px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 rounded-lg transition-colors"
             >
-              Choisir cette offre
+              Commencer un projet
             </button>
           </div>
         ))}
