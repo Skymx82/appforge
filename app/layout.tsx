@@ -33,12 +33,6 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/logo.jpeg" />
         <link rel="apple-touch-icon" href="/logo.jpeg" />
-        <link
-          rel="preload"
-          href="/hero_video.mp4"
-          as="video"
-          type="video/mp4"
-        />
       </head>
       <body className={inter.className}>{children}</body>
     </html>
