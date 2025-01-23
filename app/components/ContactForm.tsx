@@ -171,21 +171,23 @@ export default function ContactForm() {
         }),
       });
 
-      if (response.ok) {
+      if (!response.ok) {
+        const errorData = await response.text();
+        console.error('Erreur serveur:', response.status, errorData);
+        throw new Error(errorData || 'Une erreur est survenue');
+      }
+
+      const data = await response.json();
+      if (data.error) {
+        setError(data.error);
+      } else {
         setSubmitStatus('success');
         setFormData(initialFormData);
         recaptchaRef.current?.reset();
-      } else {
-        const data = await response.json();
-        if (data.error) {
-          setError(data.error);
-        } else {
-          setError('Une erreur est survenue lors de l\'envoi du message');
-        }
       }
     } catch (error: any) {
       console.error('Erreur:', error);
-      setError('Une erreur est survenue lors de l\'envoi du message');
+      setError(error.message || 'Une erreur est survenue lors de l\'envoi du message');
     } finally {
       setIsSubmitting(false);
     }
