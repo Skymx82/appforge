@@ -14,7 +14,7 @@ const projects = [
   {
     title: "BBDBuy",
     description: "Une application qui facilite l'importation de produit réservé exclusivement aux chinois",
-    mainImage: "/BBDBuy1.png",
+    mainImage: "/BBDbuy1.png",
     images: [
       "/BBDBuy2.png",
       "/BBDBuy3.png",
