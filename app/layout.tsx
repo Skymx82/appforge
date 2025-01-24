@@ -19,7 +19,6 @@ export const metadata: Metadata = {
   description: 'Transform your ideas into powerful digital solutions',
   icons: {
     icon: '/logo.jpeg',
-    apple: '/logo.jpeg',
   },
 };
 
@@ -31,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
+        <meta name="google-site-verification" content="bMMU6bQvPuxkEz-YWuugS9PlrVdnD0aAGc_mNEzxIo0" />
         <link rel="icon" href="/logo.jpeg" />
         <link rel="apple-touch-icon" href="/logo.jpeg" />
       </head>

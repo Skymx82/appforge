@@ -49,11 +49,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    // Remplacez cette ligne avec votre code de vérification Google Search Console
-    // Exemple: google: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnop'
-    google: 'google-site-verification: google0e1b7478e5c1e4a1.html',
-  },
   alternates: {
     canonical: 'https://appforge.vercel.app',
   },
