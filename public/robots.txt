@@ -1,20 +1,37 @@
-# https://www.robotstxt.org/robotstxt.html
+# Configuration optimisée pour le référencement
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://appforge.netlify.app/sitemap.xml
+Sitemap: https://appforge.vercel.app/sitemap.xml
 
-# Ne pas indexer les pages d'administration ou privées
+# Exclusions spécifiques
+Disallow: /api/
+Disallow: /_next/static/
+Disallow: /_vercel/
 Disallow: /admin/
 Disallow: /private/
-Disallow: /api/
 
-# Permettre l'indexation des ressources statiques
-Allow: /images/
-Allow: /static/
+# Autorisations spécifiques
 Allow: /*.js$
 Allow: /*.css$
+Allow: /images/
+Allow: /static/
+Allow: /assets/
+Allow: /fonts/
 
-# Optimiser le taux de crawl
+# Optimisation du crawl
+Crawl-delay: 2
+
+# Instructions spécifiques pour les robots majeurs
+User-agent: Googlebot
+Allow: /
 Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Yandexbot
+Allow: /
+Crawl-delay: 2

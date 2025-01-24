@@ -1,0 +1,10 @@
+/* TEAM */
+Developer: AppForge Team
+Site: contact@appforge.com
+Location: France
+
+/* SITE */
+Last update: 2025/01/24
+Standards: HTML5, CSS3, JavaScript
+Components: Next.js, React
+IDE: Visual Studio Code
