@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import { Analytics } from "@vercel/analytics/react";
 import './globals.css';
 
 const inter = Inter({ 
@@ -31,10 +32,11 @@ export default function RootLayout({
     <html lang="fr">
       <head>
         <meta name="google-site-verification" content="bMMU6bQvPuxkEz-YWuugS9PlrVdnD0aAGc_mNEzxIo0" />
-        <link rel="icon" href="/logo.jpeg" />
-        <link rel="apple-touch-icon" href="/logo.jpeg" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
