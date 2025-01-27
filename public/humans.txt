@@ -1,10 +1,18 @@
 /* TEAM */
 Developer: AppForge Team
-Site: contact@appforge.com
+Site: contact@appforge.ovh
+Twitter: @appforge
 Location: France
 
 /* SITE */
-Last update: 2025/01/24
+Last update: 2025/01/27
+Language: French
 Standards: HTML5, CSS3, JavaScript
-Components: Next.js, React
-IDE: Visual Studio Code
+Components: Next.js, React, Vercel
+Software: Visual Studio Code
+DNS: OVH
+Hosting: Vercel
+
+/* THANKS */
+Name: Vercel
+URL: https://vercel.com

@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://appforge.vercel.app/sitemap.xml
+Sitemap: https://appforge.ovh/sitemap.xml
 
 # Exclusions spécifiques
 Disallow: /api/
@@ -11,6 +11,8 @@ Disallow: /_next/static/
 Disallow: /_vercel/
 Disallow: /admin/
 Disallow: /private/
+Disallow: /*.json$
+Disallow: /*?*
 
 # Autorisations spécifiques
 Allow: /*.js$
@@ -19,6 +21,8 @@ Allow: /images/
 Allow: /static/
 Allow: /assets/
 Allow: /fonts/
+Allow: /sitemap.xml
+Allow: /robots.txt
 
 # Optimisation du crawl
 Crawl-delay: 2
@@ -35,3 +39,7 @@ Crawl-delay: 1
 User-agent: Yandexbot
 Allow: /
 Crawl-delay: 2
+
+# Clean URLs
+Allow: /*/$
+Disallow: /*?
