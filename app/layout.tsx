@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
-        <meta name="google-site-verification" content="bMMU6bQvPuxkEz-YWuugS9PlrVdnD0aAGc_mNEzxIo0" />
+        <meta name="google-site-verification" content="IrFuhKplisOu067Y_FFg0751XZvzObI3ftERadjoFzU" />
       </head>
       <body className={inter.className}>
         {children}
