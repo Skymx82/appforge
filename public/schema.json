@@ -1,0 +1,80 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://appforge.fr/#organization",
+      "name": "AppForge",
+      "url": "https://appforge.fr",
+      "logo": "https://appforge.fr/logo.png",
+      "image": "https://appforge.fr/mattias.jpg",
+      "description": "Expert en création de sites web professionnels à Toulouse. Développement sur mesure, prix adaptés aux PME. Plus de 10 ans d'expérience en développement web.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Toulouse",
+        "addressRegion": "Occitanie",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "43.604652",
+        "longitude": "1.444209"
+      },
+      "priceRange": "€€",
+      "telephone": "+33679336812",
+      "email": "appforge.owner@gmail.com",
+      "sameAs": [
+        "https://www.linkedin.com/company/appforge",
+        "https://github.com/appforge"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://appforge.fr/#website",
+      "url": "https://appforge.fr",
+      "name": "AppForge | Création de Sites Web Professionnels à Toulouse",
+      "publisher": {
+        "@id": "https://appforge.fr/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://appforge.fr/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://appforge.fr/#service",
+      "name": "Création de Sites Web Professionnels",
+      "provider": {
+        "@id": "https://appforge.fr/#organization"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Toulouse"
+      },
+      "description": "Développement de sites web sur mesure pour les PME et entrepreneurs, avec un prix adapté à votre chiffre d'affaires.",
+      "offers": {
+        "@type": "Offer",
+        "price": "500",
+        "priceCurrency": "EUR",
+        "priceValidUntil": "2025-12-31"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://appforge.fr/#person",
+      "name": "Mattias",
+      "jobTitle": "Développeur Web",
+      "worksFor": {
+        "@id": "https://appforge.fr/#organization"
+      },
+      "description": "Passionné par le développement web depuis l'âge de 11 ans, expert en création de sites web professionnels à Toulouse.",
+      "image": "https://appforge.fr/mattias.jpg",
+      "sameAs": [
+        "https://www.linkedin.com/in/mattias",
+        "https://github.com/mattias"
+      ]
+    }
+  ]
+}

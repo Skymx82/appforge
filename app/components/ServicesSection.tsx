@@ -82,12 +82,12 @@ export default function ServicesSection() {
   return (
     <div id="services" className="container mx-auto px-4 md:px-6 py-16 md:py-24">
       <div className="text-center mb-12">
-        <h3 className="text-3xl font-bold text-white mb-4">Nos Solutions</h3>
+        <h3 className="text-3xl font-bold text-white mb-4">Autres Solutions</h3>
         <p className="text-gray-400">
-          Du site web à l'application mobile, choisissez l'offre adaptée à vos besoins
+          Découvrez nos offres standards pour les projets plus complexes
         </p>
-        <p className="text-sm text-gray-500 mt-2">
-          Les tarifs des applications mobiles sont modulables selon vos fonctionnalités spécifiques
+        <p className="text-sm text-primary mt-2">
+          Vous êtes une petite entreprise ? Découvrez notre programme adaptatif ci-dessus
         </p>
       </div>
 
@@ -129,7 +129,7 @@ export default function ServicesSection() {
       {/* Options additionnelles */}
       <div className="mt-16">
         <h4 className="text-2xl font-bold text-white mb-8 text-center">Options additionnelles</h4>
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
           {additionalOptions.map((option, index) => (
             <div
               key={index}

@@ -2,12 +2,25 @@
 User-agent: *
 Allow: /
 
+# Host
+Host: https://www.appforge-tech.fr
+
 # Sitemap
-Sitemap: https://appforge.ovh/sitemap.xml
+Sitemap: https://www.appforge-tech.fr/sitemap.xml
+
+# Optimisé pour le référencement local sur Toulouse
+# Création de sites web professionnels
+# Développeur web freelance
+# Prix adaptés aux PME
 
 # Exclusions spécifiques
 Disallow: /api/
-Disallow: /_next/static/
+Disallow: /.env
+Disallow: /.git
+Disallow: /.github
+Disallow: /node_modules/
+Disallow: /.next/
+Disallow: /dist/
 Disallow: /_vercel/
 Disallow: /admin/
 Disallow: /private/

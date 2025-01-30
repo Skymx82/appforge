@@ -18,7 +18,7 @@ export default function MentionsLegales() {
             <h2 className="text-2xl font-semibold mb-4 text-white">1. Éditeur du site</h2>
             <p className="text-white">
               AppForge<br />
-              Entreprise individuelle<br />
+              Entreprise individuelle spécialisée dans la création de sites web professionnels<br />
               Siège social : Toulouse, France<br />
               Email : appforge.owner@gmail.com<br />
               Téléphone : +33 6 79 33 68 12<br />
@@ -57,8 +57,8 @@ export default function MentionsLegales() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4 text-white">5. Protection des données personnelles</h2>
             <p className="text-white">
-              Les informations collectées via notre formulaire de contact sont destinées à AppForge et sont utilisées pour
-              répondre à vos demandes. Conformément au RGPD, vous disposez d&apos;un droit d&apos;accès, de rectification et de
+              Les informations collectées via notre calculateur de prix sont destinées à AppForge et sont utilisées pour
+              calculer un prix adapté à votre budget et répondre à vos demandes. Conformément au RGPD, vous disposez d&apos;un droit d&apos;accès, de rectification et de
               suppression de vos données. Pour plus d&apos;informations, consultez notre{' '}
               <a href="/legal/politique-confidentialite" className="text-primary hover:text-primary/80">
                 politique de confidentialité
@@ -69,8 +69,9 @@ export default function MentionsLegales() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4 text-white">6. Cookies</h2>
             <p className="text-white">
-              Ce site utilise des cookies techniques essentiels à son fonctionnement. Ces cookies ne collectent
-              aucune donnée personnelle. Pour plus d&apos;informations, consultez notre politique de confidentialité.
+              Ce site utilise des cookies techniques essentiels à son fonctionnement ainsi qu&apos;un cookie reCAPTCHA 
+              pour la protection contre le spam. Ces cookies ne collectent aucune donnée personnelle à des fins publicitaires. 
+              Pour plus d&apos;informations, consultez notre politique de confidentialité.
             </p>
           </section>
 

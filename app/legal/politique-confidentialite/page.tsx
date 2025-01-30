@@ -17,15 +17,15 @@ export default function PolitiqueConfidentialite() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4 text-white">1. Collecte des données</h2>
             <p className="text-gray-200">
-              Nous collectons uniquement les données que vous nous fournissez volontairement via notre formulaire de contact :
+              Nous collectons uniquement les données que vous nous fournissez volontairement via notre calculateur de prix :
             </p>
             <ul className="text-gray-200">
               <li>Nom et prénom</li>
               <li>Adresse email</li>
-              <li>Numéro de téléphone</li>
-              <li>Nom de l&apos;entreprise</li>
+              <li>Numéro de téléphone (optionnel)</li>
+              <li>Nom de l'entreprise (optionnel)</li>
+              <li>Chiffre d'affaires annuel</li>
               <li>Description du projet</li>
-              <li>Budget et délai souhaités</li>
             </ul>
           </section>
 
@@ -35,12 +35,13 @@ export default function PolitiqueConfidentialite() {
               Vos données sont utilisées exclusivement pour :
             </p>
             <ul className="text-gray-200">
-              <li>Vous recontacter concernant votre demande</li>
-              <li>Établir un devis personnalisé</li>
+              <li>Calculer un prix adapté à votre budget</li>
+              <li>Vous recontacter concernant votre projet</li>
+              <li>Établir une proposition personnalisée</li>
               <li>Assurer le suivi de votre projet</li>
             </ul>
             <p className="text-gray-200">
-              Les données sont stockées de manière sécurisée et ne sont accessibles qu&apos;aux personnes habilitées d&apos;AppForge.
+              Les données sont stockées de manière sécurisée et ne sont accessibles qu'aux personnes habilitées d'AppForge.
               Elles sont conservées pendant une durée maximale de 3 ans après notre dernier contact.
             </p>
           </section>
@@ -52,7 +53,7 @@ export default function PolitiqueConfidentialite() {
             </p>
             <ul className="text-gray-200">
               <li>Envoyées par email sécurisé à notre équipe</li>
-              <li>Stockées dans un fichier sécurisé accessible uniquement par l&apos;équipe AppForge</li>
+              <li>Stockées dans un fichier sécurisé accessible uniquement par l'équipe AppForge</li>
               <li>Jamais partagées avec des tiers sans votre consentement explicite</li>
             </ul>
           </section>
@@ -63,9 +64,9 @@ export default function PolitiqueConfidentialite() {
               Conformément au RGPD, vous disposez des droits suivants :
             </p>
             <ul className="text-gray-200">
-              <li>Droit d&apos;accès à vos données</li>
+              <li>Droit d'accès à vos données</li>
               <li>Droit de rectification</li>
-              <li>Droit à l&apos;effacement (&quot;droit à l&apos;oubli&quot;)</li>
+              <li>Droit à l'effacement ("droit à l'oubli")</li>
               <li>Droit à la limitation du traitement</li>
               <li>Droit à la portabilité</li>
             </ul>
@@ -77,8 +78,14 @@ export default function PolitiqueConfidentialite() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4 text-white">5. Cookies</h2>
             <p className="text-gray-200">
-              Notre site utilise uniquement des cookies techniques essentiels au fonctionnement du site.
-              Ces cookies ne collectent aucune donnée personnelle et ne sont pas utilisés à des fins de traçage.
+              Notre site utilise uniquement :
+            </p>
+            <ul className="text-gray-200">
+              <li>Des cookies techniques essentiels au fonctionnement du site</li>
+              <li>Un cookie reCAPTCHA pour la protection contre le spam</li>
+            </ul>
+            <p className="text-gray-200">
+              Ces cookies ne collectent aucune donnée personnelle à des fins de traçage ou de publicité.
             </p>
           </section>
 
