@@ -24,14 +24,13 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 shadow-lg">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-4">
-          <div className="relative h-[112px] w-[112px]">
+          <div className="relative h-12 w-32">
             <Image
               src="/logo_transparent.png"
-              alt="AppForge - Création de Sites Web à Toulouse"
+              alt="AppForge Logo"
               fill
               className="object-contain"
               priority
-              sizes="112px"
             />
           </div>
           <h1 className="text-2xl font-bold text-primary">AppForge</h1>
