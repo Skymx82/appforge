@@ -3,8 +3,8 @@ export default function JsonLd() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'AppForge',
-    url: 'https://appforge.ovh',
-    logo: 'https://appforge.ovh/images/logo.png',
+    url: 'https://www.appforge-tech.fr',
+    logo: 'https://www.appforge-tech.fr/logo.jpeg',
     description: 'Expert en création d\'applications web et mobiles sur mesure. Solutions innovantes pour votre entreprise.',
     address: {
       '@type': 'PostalAddress',
