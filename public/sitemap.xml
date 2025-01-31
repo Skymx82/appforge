@@ -12,6 +12,11 @@
     <lastmod>2024-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.appforge-tech.fr/logo_transparent.png</image:loc>
+      <image:title>AppForge - Création de Sites Web à Toulouse</image:title>
+      <image:caption>Expert en création de sites web professionnels à Toulouse</image:caption>
+    </image:image>
   </url>
 
   <!-- Calculateur -->
