@@ -13,7 +13,7 @@ export default function JsonLd() {
     },
     sameAs: [
       'https://twitter.com/appforge',
-      'https://www.linkedin.com/company/appforge',
+      'https://www.linkedin.com/company/appforge-inc',
       'https://github.com/appforge'
     ],
     contactPoint: {

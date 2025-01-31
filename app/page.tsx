@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ContactButton from './components/ContactButton';
 import { ArrowRightIcon, SparklesIcon } from '@heroicons/react/24/outline';
+import SEOContent from './components/seo';
 
 const VideoSection = dynamic(() => import('./components/VideoSection'));
 const ServicesSection = dynamic(() => import('./components/ServicesSection'));
@@ -111,6 +112,7 @@ export default function Home() {
       <VideoSection />
       <ProjectsSection />
       <TestimonialsSection />
+      <SEOContent />
       <Footer />
     </main>
   );
