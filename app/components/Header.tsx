@@ -15,7 +15,8 @@ export default function Header() {
   }, []);
 
   const menuItems = [
-    { href: '#services', label: 'Services' },
+    { href: '/about', label: 'À propos' },
+    { href: '/services', label: 'Services' },
     { href: '#projects', label: 'Projets' },
     { href: '#process', label: 'Processus' },
   ];

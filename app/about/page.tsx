@@ -5,11 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
-
-
 export default function About() {
   return (
-    <main className="min-h-screen bg-gray-950 pt-24">
+    <main className="min-h-screen bg-gray-950">
       <div className="container mx-auto px-4 py-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -94,25 +92,25 @@ export default function About() {
                 </p>
               </div>
             </div>
-
-            <div className="mt-8 md:mt-12 flex flex-col items-center text-center">
-              <p className="text-lg md:text-xl text-primary font-semibold mb-4 md:mb-6">
-                Vous avez un projet d&apos;application en tête ?
-              </p>
-              <Link
-                href="/calculateur"
-                className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors text-base md:text-lg"
-              >
-                Calculer votre projet
-                <ArrowRightIcon className="w-5 h-5" />
-              </Link>
-              <p className="text-gray-400 mt-4">
-                Ensemble, nous pouvons créer quelque chose de grand.
-              </p>
-            </div>
           </div>
 
-          <div className="text-center text-gray-400">
+          <div className="mt-8 md:mt-12 flex flex-col items-center text-center">
+            <p className="text-lg md:text-xl text-primary font-semibold mb-4 md:mb-6">
+              Vous avez un projet d&apos;application en tête ?
+            </p>
+            <Link
+              href="/calculateur"
+              className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors text-base md:text-lg"
+            >
+              Calculer votre projet
+              <ArrowRightIcon className="w-5 h-5" />
+            </Link>
+            <p className="text-gray-400 mt-4">
+              Ensemble, nous pouvons créer quelque chose de grand.
+            </p>
+          </div>
+
+          <div className="text-center text-gray-400 mt-8">
             <p>
               Merci à tous ceux qui me soutiennent dans cette aventure ! 
             </p>
