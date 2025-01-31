@@ -4,7 +4,13 @@ export default function JsonLd() {
     '@type': 'Organization',
     name: 'AppForge',
     url: 'https://www.appforge-tech.fr',
-    logo: 'https://www.appforge-tech.fr/logo.jpeg',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://www.appforge-tech.fr/logo.jpeg',
+      width: 112,
+      height: 112,
+      caption: 'AppForge - Création de Sites Web à Toulouse'
+    },
     description: 'Expert en création d\'applications web et mobiles sur mesure. Solutions innovantes pour votre entreprise.',
     address: {
       '@type': 'PostalAddress',
